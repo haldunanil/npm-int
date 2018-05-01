@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin");
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 125px !important;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  color: #ffffff;
+  font-family: "Cabin", sans-serif;
+  height: 125px;
+}
+
+div.Footer-content {
+  padding-top: 20px;
+}

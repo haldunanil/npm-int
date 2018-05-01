@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin|Satisfy");
+
+.Header-parent {
+  height: 350px;
+  width: 100%;
+  background: #029ec2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+div.Header-content {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: #ffffff;
+}
+
+div.Header-content span {
+  font-size: 1.25rem;
+  font-family: "Cabin", sans-serif;
+}
+
+div.Header-content h1 {
+  font-size: 3rem;
+  font-family: "Cabin", sans-serif;
+}
+
+@media (max-width: 767px) {
+  .Header-explanation {
+    display: none;
+  }
+}

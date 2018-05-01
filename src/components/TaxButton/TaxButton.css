@@ -1,0 +1,54 @@
+@media screen and (max-width: 991px) {
+  div.TaxButton-col {
+    padding: 0 5px 0 5px !important;
+  }
+}
+
+.TaxButton {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  border-radius: 10px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  box-shadow: 0 2px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  font-family: "Lato", sans-serif;
+  cursor: pointer;
+}
+
+@media (min-width: 433px) and (max-width: 509px) {
+  .TaxButton {
+    font-size: 1.25em;
+  }
+}
+
+@media (min-width: 510px) {
+  .TaxButton {
+    font-size: 1.5em;
+  }
+}
+
+.TaxButton:hover {
+  transform: scale(1.05, 1.05);
+}
+
+/*.TaxButton::after {*/
+  /*content: "";*/
+  /*position: absolute;*/
+  /*z-index: -1;*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+  /*opacity: 0;*/
+  /*border-radius: 5px;*/
+  /*box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);*/
+  /*transition: opacity 0.3s ease-in-out;*/
+/*}*/
+
+.TaxButton-content {
+  position: absolute;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

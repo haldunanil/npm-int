@@ -1,0 +1,12 @@
+@media (min-width: 850px) {
+    .modal .ConfirmationModal {
+        max-width: 800px;
+    }
+}
+
+div.modal-body div.row small {
+    text-align: center;
+    width: 100%;
+    font-style: italic;
+    font-size: 0.75rem !important;
+}

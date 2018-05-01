@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin');
+
+#Navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition-duration: 0.25s;
+  font-family: 'Cabin', sans-serif;
+}
+
+#Navbar-brand:hover {
+  color: #2B9EB3 !important;
+}

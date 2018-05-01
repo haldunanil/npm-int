@@ -1,0 +1,41 @@
+.Details-bubble {
+  position: relative;
+  padding: 15px;
+  margin: 25px 0 0.5em;
+  color: #333;
+  background: #EAEAEB;
+  /* css3 */
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* creates the triangle */
+.Details-bubble:after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  border: 15px solid transparent;
+  border-bottom-color: #EAEAEB;
+  /* reduce the damage in FF3.0 */
+  display: block;
+  width: 0;
+}
+
+/* positions the triangle */
+.Details-bubble-left:after {
+  left: 50px;
+}
+
+.Details-bubble-right:after {
+  right: 50px;
+}
+
+.Details-content {
+  padding-top: 10px;
+}
+
+.Details-content p {
+  font-size: 1rem;
+  line-height: 1.25em;
+}
