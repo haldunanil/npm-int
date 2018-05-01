@@ -172,7 +172,7 @@ class App extends Component {
     } else if (this.state.main.payingTaxes.selectedButton === "right") {
       return App.makeNumberMoreReadable(this.calculatePretaxShares());
     } else {
-      throw "Error; selected button needs to be 'left' or 'right'.";
+      console.log("Error; selected button needs to be 'left' or 'right'.");
     }
   }
 
@@ -192,7 +192,7 @@ class App extends Component {
         this._calculatePretaxProceeds() - this._calculateCheckAmount()
       );
     } else {
-      throw "Error; selected button needs to be 'left' or 'right'.";
+      console.log("Error; selected button needs to be 'left' or 'right'.");
     }
   }
 
