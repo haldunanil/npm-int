@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./ConfirmationModal.css";
-import { Modal, ModalHeader, ModalBody, Container, Row, Col } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, Row } from "reactstrap";
 import ButtonSet from "../ButtonSet/ButtonSet";
 
 class ConfirmationModal extends Component {
