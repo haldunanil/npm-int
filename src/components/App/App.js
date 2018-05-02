@@ -131,11 +131,15 @@ class App extends Component {
     );
   }
 
-  calculatePretaxShares() {
-    return App.makeNumberMoreReadable(
+  _calculatePretaxShares() {
+    return (
       this.state.main.header.numRsusAvail -
-        this.state.main.sellingRsus.numRsusOnSale
+      this.state.main.sellingRsus.numRsusOnSale
     );
+  }
+
+  calculatePretaxShares() {
+    return App.makeNumberMoreReadable(this._calculatePretaxShares());
   }
 
   _calculatePretaxProceeds() {
@@ -173,7 +177,7 @@ class App extends Component {
   calculatePosttaxShares() {
     if (this.state.main.payingTaxes.selectedButton === "left") {
       return Math.max(
-        this.calculatePretaxShares() - this.calculateLiquidationShares(),
+        this._calculatePretaxShares() - this.calculateLiquidationShares(),
         0
       );
     } else if (this.state.main.payingTaxes.selectedButton === "right") {
@@ -236,7 +240,7 @@ class App extends Component {
       this.state.main.sellingRsus.numRsusOnSale &&
       this.state.main.taxRate.taxRate &&
       this.state.main.header.numRsusAvail > 0 &&
-      this.state.main.header.orderStatus !== 'processing'
+      this.state.main.header.orderStatus !== "processing"
     ) {
       newState.payingTaxes.selectedButton = side;
       this.setState({ main: newState });
@@ -329,15 +333,14 @@ class App extends Component {
         newState = this.state.main;
 
         // only processing a check if they went through the check flow
-        if (this.state.main.payingTaxes.selectedButton === 'right') {
-            newState.header.orderStatus = 'processing';
+        if (this.state.main.payingTaxes.selectedButton === "right") {
+          newState.header.orderStatus = "processing";
         }
 
         newState.header.numRsusAvail = 0;
         // todo: end todo section here
 
         this.resetData(true);
-
 
         this.setState({ main: newState });
       }
