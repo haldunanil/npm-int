@@ -10,11 +10,11 @@ class ButtonSet extends Component {
   }
 
   handleBackClick() {
-    this.props.backButton ? this.props.backButton() : null;
+    this.props.backButton();
   }
 
   handleSubmitClick() {
-    this.props.nextButton ? this.props.nextButton() : null;
+    this.props.nextButton();
   }
 
   render() {
