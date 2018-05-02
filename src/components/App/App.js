@@ -58,7 +58,8 @@ class App extends Component {
           shareValue: 25,
           companyName: "Acme Corp",
           companyAddress: "P.O. Box 1234, New York, NY 10028",
-          memoContents: "n/a"
+          memoContents: "n/a",
+          orderStatus: undefined
         },
         sellingRsus: {
           header: "Step 1: Selling RSUs",
@@ -233,7 +234,9 @@ class App extends Component {
     // determine whether to change the state of the button
     if (
       this.state.main.sellingRsus.numRsusOnSale &&
-      this.state.main.taxRate.taxRate
+      this.state.main.taxRate.taxRate &&
+      this.state.main.header.numRsusAvail > 0 &&
+      this.state.main.header.orderStatus !== 'processing'
     ) {
       newState.payingTaxes.selectedButton = side;
       this.setState({ main: newState });
@@ -321,10 +324,21 @@ class App extends Component {
 
     // reset step after to avoid janky animations
     setTimeout(callback => {
-      newState = this.state.main;
       if (newState.modal.step >= 2) {
+        // todo: drop this section once there's a backend; this is for demo purposes ONLY
+        newState = this.state.main;
+
+        // only processing a check if they went through the check flow
+        if (this.state.main.payingTaxes.selectedButton === 'right') {
+            newState.header.orderStatus = 'processing';
+        }
+
+        newState.header.numRsusAvail = 0;
+        // todo: end todo section here
+
         this.resetData(true);
-      } else {
+
+
         this.setState({ main: newState });
       }
     }, 150);
