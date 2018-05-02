@@ -44,8 +44,8 @@ class App extends Component {
           hover: false
         },
         {
-          label: "About",
-          href: "#",
+          label: "Contact Us",
+          href: "https://www.nasdaqprivatemarket.com/request-demonstration",
           disabled: true,
           hover: false
         }
