@@ -38,7 +38,7 @@ class TaxRateSection extends Component {
                     value={this.props.data.taxRate.taxRate}
                     onChange={this.props.data.taxRate.handleChange}
                     min={0}
-                    max={100}
+                    max={99}
                   />
                   <InputGroupAddon addonType="append">%</InputGroupAddon>
                 </InputGroup>

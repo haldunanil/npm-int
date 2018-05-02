@@ -222,7 +222,7 @@ class App extends Component {
     newState.taxRate.taxRate = value;
 
     // set state if value within desired params
-    if (value >= 0 && value <= 100) {
+    if (value >= 0 && value <= 99) {
       this.setState({ main: newState });
     }
   }

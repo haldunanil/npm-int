@@ -19,7 +19,7 @@ class AlertSection extends Component {
   }
 
   makeTaxRateAlert() {
-    return <Alert color="danger">Your tax rate must be between 0 and 100%.</Alert>;
+    return <Alert color="danger">Your tax rate must be between 0 and 99%.</Alert>;
   }
 
   makeProcessingAlert() {
