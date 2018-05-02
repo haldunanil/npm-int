@@ -75,6 +75,12 @@ class App extends Component {
         },
         payingTaxes: {
           header: "Step 3: Paying Taxes",
+          tooltips: {
+            left:
+              "You can pay your taxes using a portion of your RSUs. Note that if you select this option, you will not be able to sell some RSUs as they will be used to cover your taxes.",
+            right:
+              "You can pay your RSU taxes by writing your company a check. This option may be preferable if you want to keep the maximum amount of your RSUs as company stock."
+          },
           selectedButton: undefined,
           handleClick: this.handleTaxButtonClick,
           resetData: this.resetData
