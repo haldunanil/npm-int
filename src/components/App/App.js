@@ -33,8 +33,8 @@ class App extends Component {
         primaryTextColor: "#1D1E25",
         secondaryTextColor: "#6B6D75",
         highlightTextColor: "#029ec2",
-        logoActive: "nasdq_pri_mkt_rgb_rev_137x42.png",
-        logoPassive: "nasdq_pri_mkt_rgb_137x42.png"
+        logoActive: "logo_passive.png",
+        logoPassive: "logo_active.png"
       },
       nav: [
         {
