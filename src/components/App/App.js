@@ -52,7 +52,7 @@ class App extends Component {
       ],
       main: {
         header: {
-          backgroundImage: "/statistics.png",
+          backgroundImage: "statistics.png",
           headline: "Restricted Stock Units (RSUs)",
           numRsusAvail: 1000,
           shareValue: 25,
