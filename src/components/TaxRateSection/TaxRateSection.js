@@ -13,6 +13,13 @@ import {
 } from "reactstrap";
 
 class TaxRateSection extends Component {
+
+  onKeyPress(event) {
+    if (event.which === 13 /* Enter */) {
+      event.preventDefault();
+    }
+  }
+
   render() {
     return (
       <Section
@@ -25,7 +32,7 @@ class TaxRateSection extends Component {
           your tax rate.
         </p>
 
-        <Form>
+        <Form onKeyPress={this.onKeyPress}>
           <FormGroup>
             <Row>
               <Col sm={6}>

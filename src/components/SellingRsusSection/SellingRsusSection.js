@@ -5,6 +5,13 @@ import Details from "../Details";
 import { Form, FormGroup, Row, Col, InputGroup, Input, Fade } from "reactstrap";
 
 class SellingRsusSection extends Component {
+
+  onKeyPress(event) {
+    if (event.which === 13 /* Enter */) {
+      event.preventDefault();
+    }
+  }
+
   render() {
     const displayField = this.props.data.header.numRsusAvail !== 0;
 
@@ -25,7 +32,7 @@ class SellingRsusSection extends Component {
           <div>
             <p>Please select how much you would prefer to sell below:</p>
 
-            <Form>
+            <Form onKeyPress={this.onKeyPress}>
               <FormGroup>
                 <Row>
                   <Col sm={6}>
