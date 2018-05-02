@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Cabin|Satisfy");
-
 .Header-parent {
   height: 350px;
   width: 100%;
@@ -21,12 +19,10 @@ div.Header-content {
 
 div.Header-content span {
   font-size: 1.25rem;
-  font-family: "Cabin", sans-serif;
 }
 
 div.Header-content h1 {
   font-size: 3rem;
-  font-family: "Cabin", sans-serif;
 }
 
 @media (max-width: 767px) {
