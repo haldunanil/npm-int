@@ -13,13 +13,13 @@ class AlertSection extends Component {
         return <Alert color="danger">You don't have any RSUs to sell.</Alert>;
       default:
         return (
-          <Alert color="danger">You can sell between 0-{maxRsus} RSUs.</Alert>
+          <Alert color="danger">You can sell between 0 and {maxRsus} RSUs.</Alert>
         );
     }
   }
 
   makeTaxRateAlert() {
-    return <Alert color="danger">Your tax rate must be between 0-100%.</Alert>;
+    return <Alert color="danger">Your tax rate must be between 0 and 100%.</Alert>;
   }
 
   makeProcessingAlert() {
