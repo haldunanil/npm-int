@@ -35,7 +35,7 @@ class TaxRateSection extends Component {
         <Form onKeyPress={this.onKeyPress}>
           <FormGroup>
             <Row>
-              <Col sm={6}>
+              <Col lg={6}>
                 <InputGroup>
                   <Input
                     type="number"
