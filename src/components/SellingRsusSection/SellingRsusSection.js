@@ -108,7 +108,23 @@ class SellingRsusSection extends Component {
               </Details>
             </Fade>
           </div>
-        ) : null}
+        ) : (
+          <div>
+            <Details>
+              <p>
+                <strong>
+                  You have no new RSUs to sell. Please check back later!
+                </strong>
+              </p>
+
+              <ul style={{ textAlign: "left" }}>
+                <li>
+                  If you think this is a mistake, please contact your policy administrator.
+                </li>
+              </ul>
+            </Details>
+          </div>
+        )}
       </Section>
     );
   }
