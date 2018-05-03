@@ -267,8 +267,11 @@ class App extends Component {
     // check if RSUs were entered
     newState.sellingRsus.invalid = !this.state.main.sellingRsus.numRsusOnSale;
 
+    // ONLY IF numRsusOnSale is not zero (note that this is invalid, not valid, so it's reversed)
     // check if tax rate was entered
-    newState.taxRate.invalid = !this.state.main.taxRate.taxRate;
+    if (this.state.main.header.numRsusAvail > 0) {
+      newState.taxRate.invalid = !this.state.main.taxRate.taxRate;
+    }
 
     // set state
     this.setState({ main: newState });
