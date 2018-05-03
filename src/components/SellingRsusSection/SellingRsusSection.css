@@ -1,1 +1,9 @@
+button.SellAll-button {
+  font-size: 1.5rem;
+}
 
+@media (max-width: 991px) {
+  button.SellAll-button {
+    margin-top: 10px;
+  }
+}

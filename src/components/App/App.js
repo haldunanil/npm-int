@@ -17,6 +17,7 @@ class App extends Component {
     this.calculatePosttaxShares = this.calculatePosttaxShares.bind(this);
     this.calculatePosttaxProceeds = this.calculatePosttaxProceeds.bind(this);
     this.handleRsuChange = this.handleRsuChange.bind(this);
+    this.handleSellAll = this.handleSellAll.bind(this);
     this.handleTaxRateChange = this.handleTaxRateChange.bind(this);
     this.handleTaxButtonClick = this.handleTaxButtonClick.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
@@ -66,7 +67,8 @@ class App extends Component {
           id: "sellingRsuSection",
           numRsusOnSale: "",
           invalid: false,
-          handleChange: this.handleRsuChange
+          handleChange: this.handleRsuChange,
+          handleSellAll: this.handleSellAll
         },
         taxRate: {
           header: "Step 2: Tax Rate",
@@ -220,6 +222,15 @@ class App extends Component {
       // set new state
       this.setState({ main: newState });
     }
+  }
+
+  handleSellAll() {
+    // copy the state object into a new variable
+    let newState = this.state.main;
+    newState.sellingRsus.numRsusOnSale = this.state.main.header.numRsusAvail;
+
+    // set new state
+    this.setState({ main: newState });
   }
 
   handleTaxRateChange(event) {

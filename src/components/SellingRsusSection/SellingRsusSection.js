@@ -2,10 +2,18 @@ import React, { Component } from "react";
 import "./SellingRsusSection.css";
 import Section from "../Section";
 import Details from "../Details";
-import { Form, FormGroup, Row, Col, InputGroup, Input, Fade } from "reactstrap";
+import {
+  Form,
+  FormGroup,
+  Row,
+  Col,
+  InputGroup,
+  Input,
+  Fade,
+  Button
+} from "reactstrap";
 
 class SellingRsusSection extends Component {
-
   onKeyPress(event) {
     if (event.which === 13 /* Enter */) {
       event.preventDefault();
@@ -35,7 +43,7 @@ class SellingRsusSection extends Component {
             <Form onKeyPress={this.onKeyPress}>
               <FormGroup>
                 <Row>
-                  <Col sm={6}>
+                  <Col lg={6}>
                     <InputGroup>
                       <Input
                         type="number"
@@ -54,6 +62,16 @@ class SellingRsusSection extends Component {
                       </div>
                     </InputGroup>
                   </Col>
+                  <Col lg={2}>
+                    <Button
+                      color="primary"
+                      className="SellAll-button"
+                      onClick={this.props.data.sellingRsus.handleSellAll}
+                      block
+                    >
+                      Sell All
+                    </Button>
+                  </Col>
                 </Row>
               </FormGroup>
             </Form>
@@ -67,7 +85,10 @@ class SellingRsusSection extends Component {
               <Details>
                 <p>
                   <strong>
-                    You are selling {this.props.data.sellingRsus.numRsusOnSale}{" "}
+                    You are selling{" "}
+                    {this.props.calculators.makeNumberMoreReadable(
+                      this.props.data.sellingRsus.numRsusOnSale
+                    )}{" "}
                     ({this.props.calculators.calculatePercSharesSold()}% of
                     total vested) RSUs.
                   </strong>
