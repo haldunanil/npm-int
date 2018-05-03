@@ -1,8 +1,10 @@
-body, p {
+body,
+p {
   font-family: "Helvetica Neue", sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: "Helvetica Neue", sans-serif !important;
 }
 
@@ -31,6 +33,10 @@ h1, h2 {
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
