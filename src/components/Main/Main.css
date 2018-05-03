@@ -1,3 +1,10 @@
 .SellingRsus-summary {
     transition: 0.25s;
 }
+
+/*Make input fonts bigger*/
+#rsuQuantity,
+#taxRate,
+span.input-group-text {
+  font-size: 1.5rem;
+}
