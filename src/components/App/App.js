@@ -208,25 +208,31 @@ class App extends Component {
   }
 
   handleRsuChange(event) {
-    // copy the state object into a new variable
-    let newState = this.state.main;
+    // get value
     const value = event.target.value;
-    newState.sellingRsus.numRsusOnSale = value;
 
     // set state if value within desired params
     if (value >= 0 && value <= this.state.main.header.numRsusAvail) {
+      // copy the state object into a new variable
+      let newState = this.state.main;
+      newState.sellingRsus.numRsusOnSale = value;
+
+      // set new state
       this.setState({ main: newState });
     }
   }
 
   handleTaxRateChange(event) {
-    // copy the state object into a new variable
-    let newState = this.state.main;
+    // get value
     const value = event.target.value;
-    newState.taxRate.taxRate = value;
 
     // set state if value within desired params
     if (value >= 0 && value <= 99) {
+      // copy the state object into a new variable
+      let newState = this.state.main;
+      newState.taxRate.taxRate = value;
+
+      // set new state
       this.setState({ main: newState });
     }
   }
