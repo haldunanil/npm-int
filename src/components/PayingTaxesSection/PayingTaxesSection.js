@@ -4,9 +4,31 @@ import Section from "../Section";
 import TaxButton from "../TaxButton";
 import Details from "../Details";
 import ButtonSet from "../ButtonSet";
-import { Row, Col, Fade } from "reactstrap";
+import {
+  Row,
+  Col,
+  Fade,
+  Popover,
+  PopoverHeader,
+  PopoverBody
+} from "reactstrap";
 
 class PayingTaxesSection extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      popoverOpen: false
+    };
+  }
+
+  toggle() {
+    this.setState({
+      popoverOpen: !this.state.popoverOpen
+    });
+  }
+
   render() {
     return (
       <Section
@@ -52,7 +74,31 @@ class PayingTaxesSection extends Component {
                   <strong>
                     {this.props.calculators.calculateLiquidationShares()} RSUs
                     will be liquidated to pay for taxes.
-                  </strong>
+                  </strong>{" "}
+                  <a
+                    id="PopoverInfoLeft"
+                    onClick={this.toggle}
+                    style={{ color: this.props.settings.highlightTextColor }}
+                  >
+                    Why this amount?
+                  </a>
+                  <Popover
+                    placement="top"
+                    isOpen={this.state.popoverOpen}
+                    target="PopoverInfoLeft"
+                    toggle={this.toggle}
+                  >
+                    <PopoverHeader>Why this amount?</PopoverHeader>
+                    <PopoverBody>
+                      Unlike stock options, RSUs are taxed immediately when they
+                      vest. As a result, regardless of whether you're
+                      liquidating all of your RSUs, you still have to pay the
+                      taxes on all{" "}
+                      {this.props.calculators.makeNumberMoreReadable(
+                        this.props.data.header.numRsusAvail
+                      )}.
+                    </PopoverBody>
+                  </Popover>
                 </p>
                 <ul style={{ textAlign: "left" }}>
                   <li>
@@ -80,7 +126,31 @@ class PayingTaxesSection extends Component {
                     You will need to submit a check for{" "}
                     {this.props.calculators.calculateCheckAmount()}.
                   </strong>{" "}
-                  Details will be provided in "Review" section.
+                  Details will be provided in "Review" section.{" "}
+                  <a
+                    id="PopoverInfoRight"
+                    onClick={this.toggle}
+                    style={{ color: this.props.settings.highlightTextColor }}
+                  >
+                    Why this amount?
+                  </a>
+                  <Popover
+                    placement="top"
+                    isOpen={this.state.popoverOpen}
+                    target="PopoverInfoRight"
+                    toggle={this.toggle}
+                  >
+                    <PopoverHeader>Why this amount?</PopoverHeader>
+                    <PopoverBody>
+                      Unlike stock options, RSUs are taxed immediately when they
+                      vest. As a result, regardless of whether you're
+                      liquidating all of your RSUs, you still have to write a
+                      check to pay the taxes on all{" "}
+                      {this.props.calculators.makeNumberMoreReadable(
+                        this.props.data.header.numRsusAvail
+                      )}.
+                    </PopoverBody>
+                  </Popover>
                 </p>
                 <ul style={{ textAlign: "left" }}>
                   <li>
