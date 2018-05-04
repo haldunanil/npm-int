@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./TaxButton.css";
-import { Tooltip } from "reactstrap";
+import { Popover, PopoverHeader, PopoverBody } from "reactstrap";
+import Octicon from "react-octicon";
 
 class TaxButton extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class TaxButton extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.toggle = this.toggle.bind(this);
     this.state = {
-      tooltipOpen: false
+      popoverOpen: false
     };
   }
 
@@ -18,7 +19,7 @@ class TaxButton extends Component {
 
   toggle() {
     this.setState({
-      tooltipOpen: !this.state.tooltipOpen
+      popoverOpen: !this.state.popoverOpen
     });
   }
 
@@ -42,14 +43,18 @@ class TaxButton extends Component {
         >
           <div className="TaxButton-content">{this.props.children}</div>
         </div>
-        <Tooltip
+        <div id={"Popover-" + this.props.side} onClick={this.toggle}>
+          <Octicon name="question" mega />
+        </div>
+        <Popover
           placement="top"
-          isOpen={this.state.tooltipOpen}
-          target={"TaxButton-" + this.props.side}
+          isOpen={this.state.popoverOpen}
+          target={"Popover-" + this.props.side}
           toggle={this.toggle}
         >
-          {this.props.data.tooltips[this.props.side]}
-        </Tooltip>
+          <PopoverHeader>What does this mean?</PopoverHeader>
+          <PopoverBody>{this.props.data.tooltips[this.props.side]}</PopoverBody>
+        </Popover>
       </div>
     );
   }
