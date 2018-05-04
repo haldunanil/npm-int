@@ -22,24 +22,26 @@ class AlertSection extends Component {
     return <Alert color="danger">Your tax rate must be between 0 and 99%.</Alert>;
   }
 
-  makeProcessingAlert() {
-    return <Alert color="info">Your check is being processed.</Alert>;
-  }
-
   render() {
     const displayAlerts =
       this.props.data.sellingRsus.invalid ||
       this.props.data.taxRate.invalid ||
       this.props.data.header.orderStatus;
 
+    let processingStatus;
+    if (this.props.data.header.orderStatus === "processed") {
+      processingStatus = <Alert color="success">Your payment was processed successfully.</Alert>;
+    } else if (this.props.data.header.orderStatus === "processing") {
+      processingStatus = <Alert color="info">Your check is being processed.</Alert>;
+    }
+
+
     if (displayAlerts) {
       return (
         <Container style={{ paddingTop: 25 }}>
           {this.props.data.sellingRsus.invalid ? this.makeRSUSaleAlert() : null}
           {this.props.data.taxRate.invalid ? this.makeTaxRateAlert() : null}
-          {this.props.data.header.orderStatus === "processing"
-            ? this.makeProcessingAlert()
-            : null}
+          {processingStatus}
         </Container>
       );
     }

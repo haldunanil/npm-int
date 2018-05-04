@@ -353,7 +353,9 @@ class App extends Component {
         newState = this.state.main;
 
         // only processing a check if they went through the check flow
-        if (this.state.main.payingTaxes.selectedButton === "right") {
+        if (this.state.main.payingTaxes.selectedButton === "left") {
+          newState.header.orderStatus = "processed";
+        } else if (this.state.main.payingTaxes.selectedButton === "right") {
           newState.header.orderStatus = "processing";
         }
 
