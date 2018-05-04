@@ -1,25 +1,41 @@
 import React, { Component } from "react";
 import "./TaxButton.css";
-import { Popover, PopoverHeader, PopoverBody } from "reactstrap";
+import { Tooltip, Popover, PopoverHeader, PopoverBody } from "reactstrap";
 import Octicon from "react-octicon";
 
 class TaxButton extends Component {
   constructor(props) {
     super(props);
+    this.checkDisabled = this.checkDisabled.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.toggle = this.toggle.bind(this);
+    this.tooltipToggle = this.tooltipToggle.bind(this);
+    this.popoverToggle = this.popoverToggle.bind(this);
     this.state = {
+      tooltipOpen: false,
       popoverOpen: false
     };
   }
 
+  checkDisabled() {
+    return (
+      this.props.data.payingTaxes.rsuButtonDisabled &&
+      this.props.side === "left"
+    );
+  }
+
   handleClick() {
-    if (!this.props.data.payingTaxes.rsuButtonDisabled) {
+    if (!this.checkDisabled()) {
       this.props.data.payingTaxes.handleClick(this.props.side);
     }
   }
 
-  toggle() {
+  tooltipToggle() {
+    this.setState({
+      tooltipOpen: !this.state.tooltipOpen
+    });
+  }
+
+  popoverToggle() {
     this.setState({
       popoverOpen: !this.state.popoverOpen
     });
@@ -31,9 +47,7 @@ class TaxButton extends Component {
         <div
           className={
             "TaxButton TaxButton-animations" +
-            (this.props.data.payingTaxes.rsuButtonDisabled
-              ? "-disabled"
-              : "-enabled")
+            (this.checkDisabled() ? "-disabled" : "-enabled")
           }
           id={"TaxButton-" + this.props.side}
           onClick={this.handleClick}
@@ -50,14 +64,25 @@ class TaxButton extends Component {
         >
           <div className="TaxButton-content">{this.props.children}</div>
         </div>
-        <div id={"Popover-" + this.props.side} onClick={this.toggle}>
+        {this.checkDisabled() ? (
+          <Tooltip
+            placement="bottom"
+            isOpen={this.state.tooltipOpen}
+            target={"TaxButton-" + this.props.side}
+            toggle={this.tooltipToggle}
+          >
+            This option is currently unavailable
+          </Tooltip>
+        ) : null}
+
+        <div id={"Popover-" + this.props.side} onClick={this.popoverToggle}>
           <Octicon name="question" mega />
         </div>
         <Popover
           placement="top"
           isOpen={this.state.popoverOpen}
           target={"Popover-" + this.props.side}
-          toggle={this.toggle}
+          popoverToggle={this.popoverToggle}
         >
           <PopoverHeader>What does this mean?</PopoverHeader>
           <PopoverBody>

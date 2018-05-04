@@ -16,6 +16,7 @@ class App extends Component {
     this.calculateCheckAmount = this.calculateCheckAmount.bind(this);
     this.calculatePosttaxShares = this.calculatePosttaxShares.bind(this);
     this.calculatePosttaxProceeds = this.calculatePosttaxProceeds.bind(this);
+    this.handleRsuButtonDisable = this.handleRsuButtonDisable.bind(this);
     this.handleRsuChange = this.handleRsuChange.bind(this);
     this.handleSellAll = this.handleSellAll.bind(this);
     this.handleTaxRateChange = this.handleTaxRateChange.bind(this);
@@ -86,7 +87,8 @@ class App extends Component {
           },
           selectedButton: undefined,
           handleClick: this.handleTaxButtonClick,
-          resetData: this.resetData
+          resetData: this.resetData,
+          rsuButtonDisabled: false
         },
         modal: {
           isOpen: false,
@@ -209,6 +211,28 @@ class App extends Component {
     }
   }
 
+  handleRsuButtonDisable() {
+    // get data to determine whether left button should be disabled
+    const avail = this.state.main.header.numRsusAvail;
+    const onSale = this.state.main.sellingRsus.numRsusOnSale;
+    const taxRate = this.state.main.taxRate.taxRate;
+
+    // check if we should disable the left button
+    const disabled = avail * (1 - taxRate / 100) < onSale;
+
+    // copy the state object into a new variable
+    let newState = this.state.main;
+    newState.payingTaxes.rsuButtonDisabled = disabled;
+
+    // if disabled, then switch the selected button
+    if (disabled) {
+      this.handleTaxButtonClick("right");
+    }
+
+    // set new state
+    this.setState({ main: newState });
+  }
+
   handleRsuChange(event) {
     // get value
     const value = event.target.value;
@@ -222,6 +246,9 @@ class App extends Component {
 
       // set new state
       this.setState({ main: newState });
+
+      // decide whether to disable rsu button
+      this.handleRsuButtonDisable();
     }
   }
 
@@ -233,6 +260,9 @@ class App extends Component {
 
     // set new state
     this.setState({ main: newState });
+
+    // decide whether to disable rsu button
+    this.handleRsuButtonDisable();
   }
 
   handleTaxRateChange(event) {
@@ -248,6 +278,9 @@ class App extends Component {
 
       // set new state
       this.setState({ main: newState });
+
+      // decide whether to disable rsu button
+      this.handleRsuButtonDisable();
     }
   }
 
