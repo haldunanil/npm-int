@@ -57,7 +57,7 @@ class SellingRsusSection extends Component {
                       />
                       <div className="input-group-append">
                         <span className="input-group-text">
-                          @ ${this.props.data.header.shareValue} per share
+                          @ ${this.props.data.header.shareValue} / share
                         </span>
                       </div>
                     </InputGroup>
