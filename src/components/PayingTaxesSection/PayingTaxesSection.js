@@ -22,7 +22,7 @@ class PayingTaxesSection extends Component {
           <Col>
             <TaxButton
               side="left"
-              data={this.props.data.payingTaxes}
+              data={this.props.data}
               settings={this.props.settings}
             >
               I want to pay taxes by selling some RSUs.
@@ -31,7 +31,7 @@ class PayingTaxesSection extends Component {
           <Col>
             <TaxButton
               side="right"
-              data={this.props.data.payingTaxes}
+              data={this.props.data}
               settings={this.props.settings}
             >
               I want to pay taxes upfront with a check.

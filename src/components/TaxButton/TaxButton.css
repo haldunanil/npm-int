@@ -4,6 +4,7 @@
   }
 }
 
+/*tax button styles*/
 .TaxButton {
   width: 100%;
   padding-top: 100%;
@@ -12,9 +13,7 @@
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   box-shadow: 0 2px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease-in-out;
   font-family: "Lato", sans-serif;
-  cursor: pointer;
 }
 
 @media (min-width: 433px) and (max-width: 509px) {
@@ -29,10 +28,22 @@
   }
 }
 
-.TaxButton:hover {
+/* tax button animations*/
+.TaxButton-animations-enabled {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.TaxButton-animations-enabled:hover {
   transform: scale(1.05, 1.05);
 }
 
+/*disabled tax button animations*/
+.TaxButton-animations-disabled {
+  cursor: no-drop;
+}
+
+/*tax button content css*/
 .TaxButton-content {
   position: absolute;
   float: left;

@@ -14,7 +14,9 @@ class TaxButton extends Component {
   }
 
   handleClick() {
-    this.props.data.handleClick(this.props.side);
+    if (!this.props.data.payingTaxes.rsuButtonDisabled) {
+      this.props.data.payingTaxes.handleClick(this.props.side);
+    }
   }
 
   toggle() {
@@ -27,16 +29,21 @@ class TaxButton extends Component {
     return (
       <div>
         <div
-          className="TaxButton"
+          className={
+            "TaxButton TaxButton-animations" +
+            (this.props.data.payingTaxes.rsuButtonDisabled
+              ? "-disabled"
+              : "-enabled")
+          }
           id={"TaxButton-" + this.props.side}
           onClick={this.handleClick}
           style={{
             backgroundColor:
-              this.props.data.selectedButton === this.props.side
+              this.props.data.payingTaxes.selectedButton === this.props.side
                 ? this.props.settings.accentBackgroundColor
                 : this.props.settings.secondaryBackgroundColor,
             color:
-              this.props.data.selectedButton === this.props.side
+              this.props.data.payingTaxes.selectedButton === this.props.side
                 ? this.props.settings.primaryBackgroundColor
                 : this.props.settings.primaryTextColor
           }}
@@ -53,7 +60,9 @@ class TaxButton extends Component {
           toggle={this.toggle}
         >
           <PopoverHeader>What does this mean?</PopoverHeader>
-          <PopoverBody>{this.props.data.tooltips[this.props.side]}</PopoverBody>
+          <PopoverBody>
+            {this.props.data.payingTaxes.tooltips[this.props.side]}
+          </PopoverBody>
         </Popover>
       </div>
     );
