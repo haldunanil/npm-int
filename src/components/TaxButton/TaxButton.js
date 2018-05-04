@@ -17,10 +17,16 @@ class TaxButton extends Component {
   }
 
   checkDisabled() {
-    return (
+    // check if the left button is disabled
+    const leftButtonDisabled =
       this.props.data.payingTaxes.rsuButtonDisabled &&
-      this.props.side === "left"
-    );
+      this.props.side === "left";
+
+    // check if there are no RSUs left, in which case both buttons should be disabled
+    const noRsusAvailable = this.props.data.header.numRsusAvail === 0;
+
+    // return result
+    return leftButtonDisabled || noRsusAvailable;
   }
 
   handleClick() {
