@@ -218,6 +218,7 @@ class App extends Component {
       // copy the state object into a new variable
       let newState = this.state.main;
       newState.sellingRsus.numRsusOnSale = value;
+      newState.sellingRsus.invalid = false;
 
       // set new state
       this.setState({ main: newState });
@@ -228,6 +229,7 @@ class App extends Component {
     // copy the state object into a new variable
     let newState = this.state.main;
     newState.sellingRsus.numRsusOnSale = this.state.main.header.numRsusAvail;
+    newState.sellingRsus.invalid = false;
 
     // set new state
     this.setState({ main: newState });
@@ -242,6 +244,7 @@ class App extends Component {
       // copy the state object into a new variable
       let newState = this.state.main;
       newState.taxRate.taxRate = value;
+      newState.taxRate.invalid = false;
 
       // set new state
       this.setState({ main: newState });
